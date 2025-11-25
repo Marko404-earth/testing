@@ -4,29 +4,45 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Wonders of Cavite</title>
-  <link rel="stylesheet" href="styles.css">
   <style>
-    /* layout */
-    :root { --sidebar-width: 220px; --accent: #4DA8DA; --bg: #7A7A73; }
+    :root { --sidebar-width: 220px; --accent: #4DA8DA; --bg: #7A7A73; --header-h: 60px; }
     html, body { height: 100%; margin: 0; font-family: Arial, sans-serif; background: var(--bg); color: #111; }
-    /* sidebar */
-    .sidebar {
+    /* top horizontal header */
+    .topbar {
       position: fixed;
       top: 0;
       left: 0;
+      right: 0;
+      height: var(--header-h);
+      background: #111; /* header background color */
+      color: #fff;
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      box-sizing: border-box;
+      z-index: 40;
+    }
+    .topbar .logo { font-weight: 700; font-size: 18px; margin-right: 12px; }
+    .topbar .site-title { font-size: 16px; }
+    /* sidebar vertical nav placed under header */
+    .sidebar {
+      position: fixed;
+      top: var(--header-h);
+      left: 0;
       width: var(--sidebar-width);
-      height: 100vh;
+      height: calc(100vh - var(--header-h));
       background: var(--accent);
       color: #fff;
       display: flex;
       flex-direction: column;
-      gap: 18px;
-      padding: 20px 16px;
+      gap: 12px;
+      padding: 18px 12px;
       box-sizing: border-box;
+      z-index: 30;
+      overflow-y: auto;
     }
-    .sidebar .brand { margin-bottom: 6px; }
-    .sidebar h1 { font-size: 18px; margin: 0; line-height: 1.1; }
-    .sidebar nav ul { list-style: none; padding: 0; margin: 12px 0 0 0; display:flex; flex-direction:column; gap:8px; }
+    .sidebar h1 { font-size: 16px; margin: 0 0 6px 0; }
+    .sidebar nav ul { list-style: none; padding: 0; margin: 6px 0 0 0; display:flex; flex-direction:column; gap:8px; }
     .sidebar nav a {
       display: block;
       color: #fff;
@@ -35,20 +51,33 @@
       border-radius: 6px;
     }
     .sidebar nav a:hover,
-    .sidebar nav a:focus {
-      background: rgba(255,255,255,0.12);
-      outline: none;
-    }
-    /* main content area */
+    .sidebar nav a:focus { background: rgba(255,255,255,0.12); outline: none; }
+    /* main content sits to the right and below the header */
     .content {
       margin-left: var(--sidebar-width);
+      margin-top: var(--header-h);
       padding: 28px;
       box-sizing: border-box;
-      min-height: 100vh;
+      min-height: calc(100vh - var(--header-h));
     }
-    /* keep iframe responsive */
+    /* Responsive: collapse sidebar below header on small screens */
+    @media (max-width: 720px) {
+      :root { --sidebar-width: 100%; }
+      .sidebar {
+        position: relative;
+        top: 0;
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+        padding: 10px;
+      }
+      .sidebar nav ul { flex-direction: row; gap: 8px; margin: 0; }
+      .content { margin-left: 0; margin-top: calc(var(--header-h) + 12px); padding: 16px; }
+    }
     .video-wrap iframe {
-      width: 100%;
+      width: 80%;
       max-width: 900px;
       height: 480px;
       border: 0;
@@ -56,27 +85,16 @@
       border-radius: 8px;
       box-shadow: 0 8px 20px rgba(0,0,0,0.25);
     }
-    /* responsive: collapse sidebar to top bar on small screens */
-    @media (max-width: 720px) {
-      .sidebar {
-        position: relative;
-        width: 100%;
-        height: auto;
-        flex-direction: row;
-        align-items: center;
-        gap: 12px;
-        padding: 12px;
-      }
-      .sidebar nav ul { flex-direction: row; gap: 8px; margin: 0; }
-      .content { margin-left: 0; padding: 16px; }
-      .video-wrap iframe { height: 320px; }
-    }
   </style>
 </head>
 <body>
+  <header class="topbar" role="banner">
+    <div class="logo">🌴</div>
+    <div class="site-title"><h1>Wonders of Cavite</h1></div>
+  </header>
   <aside class="sidebar" aria-label="Main navigation">
     <div class="brand">
-      <h1>Wonders of Cavite</h1>
+      <h1>Explore</h1>
     </div>
     <nav aria-label="Primary">
       <ul>
@@ -88,25 +106,9 @@
       </ul>
     </nav>
   </aside>
-  <main class="content">
+  <main class="content" role="main">
     <section id="home" class="video-wrap">
       <iframe src="https://www.youtube.com/embed/ol_76rcb9wA" allowfullscreen title="Wonders of Cavite"></iframe>
-    </section>
-    <section id="cities">
-      <h2>Cities</h2>
-      <p></p>
-    </section>
-    <section id="food">
-      <h2>Food</h2>
-      <p></p>
-    </section>
-    <section id="religions">
-      <h2>Religions</h2>
-      <p></p>
-    </section>
-    <section id="contact">
-      <h2>Contact</h2>
-      <p></p>
     </section>
   </main>
 </body>
