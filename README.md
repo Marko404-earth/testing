@@ -91,14 +91,15 @@
 <body>
   <header class="topbar" role="banner">
   <span style="color: #7A7A73;">
+  <center>
     <div class="site-title"><h1>Wonders of Cavite</h1></div>
+  </center>
   </header>
   <aside class="sidebar" aria-label="Main navigation">
-    <div class="brand">
-      <h1>Explore</h1>
+    <div class="brand" style="color: #7A7A73;">
     </div>
     <nav aria-label="Primary">
-      <ul style="color: #7A7A73;">
+      <ul>
         <li><a href="#home">Home</a></li>
         <li><a href="#cities">Cities</a></li>
         <li><a href="#food">Food</a></li>
