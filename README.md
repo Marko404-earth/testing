@@ -14,7 +14,7 @@
       left: 0;
       right: 0;
       height: var(--header-h);
-      background: #111; /* header background color */
+      background: #4DA8DA; /* header background color */
       color: #fff;
       display: flex;
       align-items: center;
@@ -26,13 +26,14 @@
     .topbar .site-title { font-size: 16px; }
     /* sidebar vertical nav placed under header */
     .sidebar {
+      font-weight: bold;
       position: fixed;
       top: var(--header-h);
       left: 0;
       width: var(--sidebar-width);
       height: calc(100vh - var(--header-h));
       background: var(--accent);
-      color: #fff;
+      color: #7A7A73;
       display: flex;
       flex-direction: column;
       gap: 12px;
@@ -77,7 +78,7 @@
       .content { margin-left: 0; margin-top: calc(var(--header-h) + 12px); padding: 16px; }
     }
     .video-wrap iframe {
-      width: 80%;
+      width: 100%;
       max-width: 900px;
       height: 480px;
       border: 0;
@@ -89,7 +90,7 @@
 </head>
 <body>
   <header class="topbar" role="banner">
-    <div class="logo">🌴</div>
+  <span style="color: #7A7A73;">
     <div class="site-title"><h1>Wonders of Cavite</h1></div>
   </header>
   <aside class="sidebar" aria-label="Main navigation">
@@ -97,7 +98,7 @@
       <h1>Explore</h1>
     </div>
     <nav aria-label="Primary">
-      <ul>
+      <ul style="color: #7A7A73;">
         <li><a href="#home">Home</a></li>
         <li><a href="#cities">Cities</a></li>
         <li><a href="#food">Food</a></li>
